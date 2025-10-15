@@ -36,12 +36,6 @@ fieldOfView(antenaView)
 
 target_poses = [43.4317231, -83.9592416; 39.1643136, -76.9032192];
 
-%targets(length(target_poses), 1) = groundStation(sc,target_poses(1),target_poses(1,2), "Name","Target");
-
-%for pos = 1:length(target_poses)
-%    targets(pos,1) = groundStation(sc,target_poses(1),target_poses(1,2), "Name","Target");
-%end
-
 for pos = 1:length(target_poses)
     tLat=target_poses(pos, 1);
     tLon=target_poses(pos, 2);
