@@ -1,5 +1,5 @@
 startTime = datetime("today","TimeZone","UTC");
-duration = days(14);
+duration = days(10);
 endTime = startTime + duration;
 
 step = 60;
@@ -35,14 +35,20 @@ antenaView = conicalSensor(antena, "MaxViewAngle",120);
 fieldOfView(antenaView)
 
 target_poses = [43.4317231, -83.9592416; 39.1643136, -76.9032192];
-targets = [];
 
-tLat = 43.4317231;
-tLon = -83.9592416;
-target = groundStation(sc,tLat,tLon, "Name","Target");
+%targets(length(target_poses), 1) = groundStation(sc,target_poses(1),target_poses(1,2), "Name","Target");
 
-acTarget = access(camera,target);
-tTarget = accessIntervals(acTarget)
+%for pos = 1:length(target_poses)
+%    targets(pos,1) = groundStation(sc,target_poses(1),target_poses(1,2), "Name","Target");
+%end
+
+for pos = 1:length(target_poses)
+    tLat=target_poses(pos, 1);
+    tLon=target_poses(pos, 2);
+    target = groundStation(sc,tLat,tLon, "Name","Target");
+    acTarget = access(camera,target);
+    tTarget = accessIntervals(acTarget)
+end
 
 acGSattion = access(antenaView,iss);
 tGStation = accessIntervals(acGSattion)
