@@ -34,7 +34,7 @@ pointAt(antena, [38.9961;-77.0281;1000])
 antenaView = conicalSensor(antena, "MaxViewAngle",120);
 fieldOfView(antenaView)
 
-target_poses = [43.4317231, -83.9592416; 39.1643136, -76.9032192];
+target_poses = readmatrix('PhotoTimes.txt');
 
 for pos = 1:length(target_poses)
     tLat=target_poses(pos, 1);
