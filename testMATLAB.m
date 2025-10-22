@@ -41,7 +41,9 @@ for pos = 1:length(target_poses)
     tLon=target_poses(pos, 2);
     target = groundStation(sc,tLat,tLon, "Name","Target");
     acTarget = access(camera,target);
-    tTarget = accessIntervals(acTarget)
+    tTarget = accessIntervals(acTarget);
+    writetable(tTarget,'times'+string(pos)+'.txt','Delimiter',' ')
+    type 'times.txt'
 end
 
 acGSattion = access(antenaView,iss);
