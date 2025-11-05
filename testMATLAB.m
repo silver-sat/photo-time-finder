@@ -34,7 +34,7 @@ pointAt(antena, [38.9961;-77.0281;1000])
 antenaView = conicalSensor(antena, "MaxViewAngle",120);
 fieldOfView(antenaView)
 
-target_poses = readmatrix('PhotoTimes.txt');
+target_poses = readmatrix('PhotoPoses.txt');
 
 for pos = 1:length(target_poses)
     tLat=target_poses(pos, 1);
@@ -43,7 +43,6 @@ for pos = 1:length(target_poses)
     acTarget = access(camera,target);
     tTarget = accessIntervals(acTarget);
     writetable(tTarget,'times'+string(pos)+'.txt','Delimiter',' ')
-    type 'times.txt'
 end
 
 acGSattion = access(antenaView,iss);
