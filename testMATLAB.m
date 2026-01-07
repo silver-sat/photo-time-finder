@@ -1,5 +1,5 @@
 startTime = datetime("today","TimeZone","UTC");
-duration = days(10);
+duration = days(7);
 endTime = startTime + duration;
 
 step = 60;
@@ -7,7 +7,7 @@ step = 60;
 sc = satelliteScenario(startTime, endTime, step);
 viewer = satelliteScenarioViewer(sc, "Dimension","3D");
 
-iss = satellite(sc, "ISS.tle", "Name","ISS");
+iss = satellite(sc, "SilverSat.tle", "Name","SilverSat");
 
 [pos,vel,timeOut] = states(iss,"CoordinateFrame","geographic");
 
@@ -25,13 +25,13 @@ pointAt(iss,timeTable,"CoordinateFrame","ned","Format","euler");
 camera = conicalSensor(iss,"MaxViewAngle",70); % I think
 fieldOfView(camera,"LineColor",[1 0 1]);
 
-gLat = 38.9961;
-gLon = -77.0281;
+gLat = 51.7383;
+gLon = 19.8196;
 gstation = groundStation(sc,gLat,gLon, "Name","Ground Station");
 
 antena = gimbal(gstation);
 pointAt(antena, [38.9961;-77.0281;1000])
-antenaView = conicalSensor(antena, "MaxViewAngle",120);
+antenaView = conicalSensor(antena, "MaxViewAngle",179);
 fieldOfView(antenaView)
 
 target_poses = readmatrix('PhotoPoses.txt');
